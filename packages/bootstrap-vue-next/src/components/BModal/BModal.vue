@@ -384,8 +384,7 @@ const {activePosition, activeModalCount, stackWithoutSelf} = useModalManager(
 
 const sharedClasses = computed(() => ({
   [`stack-position-${activePosition?.value ?? 0}`]: true,
-  [`stack-inverse-position-${(activeModalCount?.value ?? 1) - 1 - (activePosition?.value ?? 0)}`]:
-    true,
+  [`stack-inverse-position-${(activeModalCount?.value ?? 1) - 1 - (activePosition?.value ?? 0)}`]: true,
 }))
 
 watch(stackWithoutSelf, (newValue, oldValue) => {
@@ -393,7 +392,9 @@ watch(stackWithoutSelf, (newValue, oldValue) => {
     hide()
 })
 
-const defaultModalDialogZIndex = ref(getModalZIndex(element.value ?? document.body))
+const defaultModalDialogZIndex = ref(
+  getModalZIndex(element.value ?? (typeof document !== 'undefined' ? document.body : undefined))
+)
 
 onMounted(() => {
   watch(

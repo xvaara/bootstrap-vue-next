@@ -16,12 +16,6 @@ export default {
             description:
               "Use a specific ID for this tab's tab control button. If not provided, one will automatically be generated",
           },
-          unmountLazy: {
-            type: 'boolean',
-            default: undefined,
-            description:
-              'When set and lazy is also set, the content will be unmounted when the tab is not active',
-          },
           noBody: {
             type: 'boolean',
             default: false,
@@ -44,7 +38,7 @@ export default {
             description:
               "CSS class (or classes) to apply to the tab's control button inner link element",
           },
-          ...pick(showHideProps, ['lazy']),
+          ...pick(showHideProps, ['lazy', 'unmountLazy']),
           ...pick(buildCommonProps(), ['active', 'disabled', 'id', 'tag', 'title']),
         } satisfies Record<keyof BvnComponentProps['BTab'], PropertyReference>,
       },
@@ -91,7 +85,7 @@ export default {
             type: 'boolean',
             default: false,
             description:
-              "When set to true, renders the tabs the the appropriate styles to be placed into a 'b-card'",
+              "When set to true, renders the tabs with the appropriate styles to be placed into a 'b-card'",
           },
           contentClass: {
             type: 'ClassValue',

@@ -16,6 +16,7 @@
       :aria-expanded="props.split ? undefined : showRef"
       :aria-haspopup="props.split ? undefined : 'menu'"
       :href="props.split ? props.splitHref : undefined"
+      :icon="props.icon"
       :to="props.split && props.splitTo ? props.splitTo : undefined"
       @click="onSplitClick"
     >
@@ -53,12 +54,11 @@
           v-show="showRef"
           :id="computedId + '-menu'"
           ref="_floating"
-          :style="[floatingStyles, sizeStyles]"
+          :style="[floatingStyles, sizeStyles, {display: showRef ? 'block' : 'none'}]"
           class="dropdown-menu overflow-auto"
           :class="[props.menuClass, computedMenuClasses]"
           :aria-labelledby="computedId"
           :role="props.role"
-          style="display: block"
           @click="onClickInside"
         >
           <slot v-if="contentShowing" :hide="hide" :show="show" :visible="showRef" />
@@ -115,6 +115,7 @@ const _props = withDefaults(defineProps<Omit<BDropdownProps, 'modelValue'>>(), {
   teleportDisabled: false,
   disabled: false,
   floatingMiddleware: undefined,
+  icon: false,
   id: undefined,
   initialAnimation: false,
   isNav: false,
