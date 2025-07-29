@@ -1,5 +1,240 @@
 # Changelog
 
+## [0.31.0](https://github.com/xvaara/bootstrap-vue-next/compare/nuxt-v0.30.4...nuxt-v0.31.0) (2025-07-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTable:** fix a long standing regression in which the comparer function in btable did not give the item value, instead passing a string fixes #2565
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **useToast:** rename useToast to useToastController fixes #2155
+* **BDropdown:** remove props center, dropend, dropstart, dropup, & end -- use single prop placement -- has same rules as popover. placement=top-start placement=bottom-start placement=right-start etc etc fixes #1752
+* **BProgress:** fix markup for BProgress to match bootstrap 5.3 recommended fixes #2221 . Manual intervention may not be needed, double check your aria markup (if manually configured), may be automatic
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value
+* **BModal:** remove prop backdropVariant
+* **BModal:** revert back to using the native `div.modal-backdrop`
+* **BOffcanvas:** revert back to native `div.offcanvas-backdrop`
+* **BOffcanvas:** remove prop backdropBlur and backdropVariant
+* **createBootstrap:** remove automatic import of components and directives fixing an issue with createBootstrap bloating the project size. When components were unused, it bloated the project size -- ie not tree shaking when you only used the plugins
+* **createBootstrap:** flatten the params object. The previous "plugins" key is now the top most level object => `{ plugins: { id: {} }` => `{ id: {} }` and so on
+* **createBootstrap:** remove alias in createBootstrap, use alias in unplugin-vue-components resolver instead
+* remove the default export. Use named export `createBootstrap` instead
+* **BOffcanvas:** rename prop backdrop to hideBackdrop to be more in line with standard of bmodal
+
+### Features
+
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BAccordion:** add model index to control the index of open item/items. If free is true it is an array of open items ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BAccordion:** modelValue is array id prop free is true ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BAccordion:** modelValue is array id prop free is true ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BAccordion:** modelValue is array id prop free is true ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BAccordion:** modelValue is array id prop free is true ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BAccordion:** modelValue is array id prop free is true ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BAccordion:** modelValue is array id prop free is true ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BAccordion:** modelValue is array id prop free is true ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BAccordion:** modelValue is array id prop free is true ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BAccordion:** modelValue is array id prop free is true ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BAccordion:** modelValue is array id prop free is true ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BAccordion:** modelValue is array id prop free is true ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BAccordion:** modelValue is array id prop free is true ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BAlert:** add noResumeOnHoverLeave prop ([69316a5](https://github.com/xvaara/bootstrap-vue-next/commit/69316a565f39f0b17932dcf6691a287f0ce4ed9d))
+* **BDropdown:** remove props center, dropend, dropstart, dropup, & end -- use single prop placement -- has same rules as popover. placement=top-start placement=bottom-start placement=right-start etc etc fixes [#1752](https://github.com/xvaara/bootstrap-vue-next/issues/1752) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BFormCheckbboxGroup:** spread the input object rather than el.props fixes [#2590](https://github.com/xvaara/bootstrap-vue-next/issues/2590) ([2c3970c](https://github.com/xvaara/bootstrap-vue-next/commit/2c3970ca3ed0c3d312600877c8ec0043a6834144))
+* **BFormRadioGroup:** spread the input object rather than el.props fixes [#2590](https://github.com/xvaara/bootstrap-vue-next/issues/2590) ([2c3970c](https://github.com/xvaara/bootstrap-vue-next/commit/2c3970ca3ed0c3d312600877c8ec0043a6834144))
+* **BModal:** remove prop backdropVariant ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **BModal:** revert back to using the native `div.modal-backdrop` ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **BOffcanvas:** remove prop backdropBlur and backdropVariant ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **BOffcanvas:** rename prop backdrop to hideBackdrop to be more in line with standard of bmodal ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **BOffcanvas:** revert back to native `div.offcanvas-backdrop` ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **BProgress:** fix markup for BProgress to match bootstrap 5.3 recommended fixes [#2221](https://github.com/xvaara/bootstrap-vue-next/issues/2221) . Manual intervention may not be needed, double check your aria markup (if manually configured), may be automatic ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BTab:** expose activate and deactivate ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTab:** expose activate and deactivate ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTab:** expose activate and deactivate ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTab:** expose activate and deactivate ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTab:** expose activate and deactivate ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTab:** expose activate and deactivate ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTab:** expose activate and deactivate ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTab:** expose activate and deactivate ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTab:** expose activate and deactivate ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTab:** expose activate and deactivate ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTab:** expose activate and deactivate ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTab:** expose activate and deactivate ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BTable:** add emptyText and emptyFilteredText functionality fixes [#664](https://github.com/xvaara/bootstrap-vue-next/issues/664) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTabs:** change modelValue to have id, and add v-model:index for the old value ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BToast:** add noResumeOnHoverLeave prop ([69316a5](https://github.com/xvaara/bootstrap-vue-next/commit/69316a565f39f0b17932dcf6691a287f0ce4ed9d))
+* **createBootstrap:** flatten the params object. The previous "plugins" key is now the top most level object =&gt; `{ plugins: { id: {} }` =&gt; `{ id: {} }` and so on ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **createBootstrap:** remove alias in createBootstrap, use alias in unplugin-vue-components resolver instead ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **createBootstrap:** remove automatic import of components and directives fixing an issue with createBootstrap bloating the project size. When components were unused, it bloated the project size -- ie not tree shaking when you only used the plugins ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **modalController:** make {} default for show/confirm -- param not required ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* namespace out package - bootstrap-vue-next/directives bootstrap-vue-next/components etc ([69316a5](https://github.com/xvaara/bootstrap-vue-next/commit/69316a565f39f0b17932dcf6691a287f0ce4ed9d))
+* **nuxt:** add css option to not automatically include css ([f6adcee](https://github.com/xvaara/bootstrap-vue-next/commit/f6adceeb2ce4d994215f7864c1adaf39deaa9160))
+* **PluginControllers:** Allow for using the prop.id for the items key. Ie if you supply modalController.show({props: {id: 'foo' }}) You can reference it leave('foo') ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* remove the default export. Use named export `createBootstrap` instead ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* **toast:** make {} default for show -- param not required ([1e88b09](https://github.com/xvaara/bootstrap-vue-next/commit/1e88b09d8992e13948e6f94278c7c51cf4960ec8))
+* use vues useId fn ([69316a5](https://github.com/xvaara/bootstrap-vue-next/commit/69316a565f39f0b17932dcf6691a287f0ce4ed9d))
+* **usePopoverController:** create usePopoverController composable (not fully complete) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **useToast:** rename useToast to useToastController fixes [#2155](https://github.com/xvaara/bootstrap-vue-next/issues/2155) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+
+
+### Bug Fixes
+
+* **BAccordion:** modelValue is now undefined if no items open. ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BAccordion:** modelValue is now undefined if no items open. ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BAccordion:** modelValue is now undefined if no items open. ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BAccordion:** modelValue is now undefined if no items open. ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BAccordion:** modelValue is now undefined if no items open. ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BAccordion:** modelValue is now undefined if no items open. ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BAccordion:** modelValue is now undefined if no items open. ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BAccordion:** modelValue is now undefined if no items open. ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BAccordion:** modelValue is now undefined if no items open. ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BAccordion:** modelValue is now undefined if no items open. ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BAccordion:** modelValue is now undefined if no items open. ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BAccordion:** modelValue is now undefined if no items open. ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BAccordion:** reactivity working in v-for ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BAccordion:** reactivity working in v-for ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BAccordion:** reactivity working in v-for ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BAccordion:** reactivity working in v-for ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BAccordion:** reactivity working in v-for ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BAccordion:** reactivity working in v-for ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BAccordion:** reactivity working in v-for ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BAccordion:** reactivity working in v-for ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BAccordion:** reactivity working in v-for ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BAccordion:** reactivity working in v-for ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BAccordion:** reactivity working in v-for ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BAccordion:** reactivity working in v-for ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BAccordion:** ssr fixes. ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BAccordion:** ssr fixes. ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BAccordion:** ssr fixes. ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BAccordion:** ssr fixes. ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BAccordion:** ssr fixes. ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BAccordion:** ssr fixes. ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BAccordion:** ssr fixes. ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BAccordion:** ssr fixes. ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BAccordion:** ssr fixes. ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BAccordion:** ssr fixes. ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BAccordion:** ssr fixes. ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BAccordion:** ssr fixes. ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BAvatar:** avatar style getting literal Size values fixes [#2535](https://github.com/xvaara/bootstrap-vue-next/issues/2535) ([7621aad](https://github.com/xvaara/bootstrap-vue-next/commit/7621aad0000c9138983315630e35657c6eb97f08))
+* **BDropdown:** bdropdown when in button group has class btn-group fixes [#2025](https://github.com/xvaara/bootstrap-vue-next/issues/2025) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BLink:** Link receiving / href when trying to use href prop fixes [#2434](https://github.com/xvaara/bootstrap-vue-next/issues/2434) ([#2438](https://github.com/xvaara/bootstrap-vue-next/issues/2438)) ([aea1798](https://github.com/xvaara/bootstrap-vue-next/commit/aea179881c27e429b1588a62844fd230ec36df0d))
+* **BLink:** nuxt should do full page reloads on to prop fixes [#2445](https://github.com/xvaara/bootstrap-vue-next/issues/2445) ([#2449](https://github.com/xvaara/bootstrap-vue-next/issues/2449)) ([cce9833](https://github.com/xvaara/bootstrap-vue-next/commit/cce9833ebd91bcfe1037ffb6422edfdc03389198))
+* **BTab:** click event is now preventable. ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTab:** click event is now preventable. ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTab:** click event is now preventable. ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTab:** click event is now preventable. ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTab:** click event is now preventable. ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTab:** click event is now preventable. ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTab:** click event is now preventable. ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTab:** click event is now preventable. ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTab:** click event is now preventable. ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTab:** click event is now preventable. ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTab:** click event is now preventable. ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTab:** click event is now preventable. ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BTable:** busy slot behavior to match bootstrap-vue fixes [#1636](https://github.com/xvaara/bootstrap-vue-next/issues/1636) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BTable:** cast formatted items to string fixes [#2227](https://github.com/xvaara/bootstrap-vue-next/issues/2227) ([e6749a3](https://github.com/xvaara/bootstrap-vue-next/commit/e6749a366aa839d2607c1aeba6b786e4e2299abf))
+* **BTable:** duplicate labels with both labelstacked and label fixes [#2608](https://github.com/xvaara/bootstrap-vue-next/issues/2608) ([0658251](https://github.com/xvaara/bootstrap-vue-next/commit/0658251e3a592835c89b829993ea874a54b4ae22))
+* **BTable:** fix a long standing regression in which the comparer function in btable did not give the item value, instead passing a string fixes [#2565](https://github.com/xvaara/bootstrap-vue-next/issues/2565) ([05d0b6e](https://github.com/xvaara/bootstrap-vue-next/commit/05d0b6ef7f2561683d06132354616933a0455307))
+* **BTableLite:** stacked uses field key instead of defined label fixes [#2591](https://github.com/xvaara/bootstrap-vue-next/issues/2591) ([05d0b6e](https://github.com/xvaara/bootstrap-vue-next/commit/05d0b6ef7f2561683d06132354616933a0455307))
+* **BTable:** stacked mode when using breakpoint data-label not rendering fixes [#2595](https://github.com/xvaara/bootstrap-vue-next/issues/2595) ([2c3970c](https://github.com/xvaara/bootstrap-vue-next/commit/2c3970ca3ed0c3d312600877c8ec0043a6834144))
+* **BTabs:** fix focus on keyboard navigation ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTabs:** fix focus on keyboard navigation ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTabs:** fix focus on keyboard navigation ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTabs:** fix focus on keyboard navigation ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTabs:** fix focus on keyboard navigation ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTabs:** fix focus on keyboard navigation ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTabs:** fix focus on keyboard navigation ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTabs:** fix focus on keyboard navigation ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTabs:** fix focus on keyboard navigation ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTabs:** fix focus on keyboard navigation ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTabs:** fix focus on keyboard navigation ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTabs:** fix focus on keyboard navigation ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BTabs:** fix initial value and some ssr errors ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTabs:** fix initial value and some ssr errors ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTabs:** fix initial value and some ssr errors ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTabs:** fix initial value and some ssr errors ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTabs:** fix initial value and some ssr errors ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTabs:** fix initial value and some ssr errors ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTabs:** fix initial value and some ssr errors ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTabs:** fix initial value and some ssr errors ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTabs:** fix initial value and some ssr errors ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTabs:** fix initial value and some ssr errors ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTabs:** fix initial value and some ssr errors ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTabs:** fix initial value and some ssr errors ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BTabs:** posible loop if activate-tab event is prevented. ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTabs:** posible loop if activate-tab event is prevented. ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTabs:** posible loop if activate-tab event is prevented. ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTabs:** posible loop if activate-tab event is prevented. ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTabs:** posible loop if activate-tab event is prevented. ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTabs:** posible loop if activate-tab event is prevented. ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTabs:** posible loop if activate-tab event is prevented. ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTabs:** posible loop if activate-tab event is prevented. ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTabs:** posible loop if activate-tab event is prevented. ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTabs:** posible loop if activate-tab event is prevented. ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTabs:** posible loop if activate-tab event is prevented. ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTabs:** posible loop if activate-tab event is prevented. ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* **BTabs:** reactivity in v-for fixed ([5571606](https://github.com/xvaara/bootstrap-vue-next/commit/557160664104036a45844626ac00c87131884262))
+* **BTabs:** reactivity in v-for fixed ([c0a00ac](https://github.com/xvaara/bootstrap-vue-next/commit/c0a00ac41f19d4bc361b8f6520101a1ec73300cc))
+* **BTabs:** reactivity in v-for fixed ([062cbfb](https://github.com/xvaara/bootstrap-vue-next/commit/062cbfba9e4182e2857a66cfd587b836ec4e9f14))
+* **BTabs:** reactivity in v-for fixed ([93118d0](https://github.com/xvaara/bootstrap-vue-next/commit/93118d029c561e751241e5de464251d38bf0abc8))
+* **BTabs:** reactivity in v-for fixed ([d53ca4e](https://github.com/xvaara/bootstrap-vue-next/commit/d53ca4ed9563d020b4cb9064fae1b622f81b050a))
+* **BTabs:** reactivity in v-for fixed ([3e671ed](https://github.com/xvaara/bootstrap-vue-next/commit/3e671ed4c6e555603c8b9e7880363669d0a4da3c))
+* **BTabs:** reactivity in v-for fixed ([7dccd61](https://github.com/xvaara/bootstrap-vue-next/commit/7dccd614af21bf9e862e800fc7a8b8aa7859328f))
+* **BTabs:** reactivity in v-for fixed ([b88d260](https://github.com/xvaara/bootstrap-vue-next/commit/b88d260974dd2ce00061f450bc5a37579a0fe2fe))
+* **BTabs:** reactivity in v-for fixed ([919ebd5](https://github.com/xvaara/bootstrap-vue-next/commit/919ebd5941fe07a86abbfe677fee3cc84b2030bd))
+* **BTabs:** reactivity in v-for fixed ([ee17d63](https://github.com/xvaara/bootstrap-vue-next/commit/ee17d635513d9df25bb229a040c7a99f2a375841))
+* **BTabs:** reactivity in v-for fixed ([bcb61d3](https://github.com/xvaara/bootstrap-vue-next/commit/bcb61d3d8171ebfd56c88fdb730b251d47ad1844))
+* **BTabs:** reactivity in v-for fixed ([7103afc](https://github.com/xvaara/bootstrap-vue-next/commit/7103afc968d88cd64e8ca7fcb9c81400a7094f50))
+* change renderorskip to wrapper, add our own teleport logic. ([#2162](https://github.com/xvaara/bootstrap-vue-next/issues/2162)) ([8c0acbd](https://github.com/xvaara/bootstrap-vue-next/commit/8c0acbd2ca957be27dd618bb7e33b7ff943973be))
+* **nuxt:** module using wrong routerComponentName causing default a tag to do full page reloads ([#2465](https://github.com/xvaara/bootstrap-vue-next/issues/2465)) ([c737ec2](https://github.com/xvaara/bootstrap-vue-next/commit/c737ec255b8eb848a6711eea5383cbf20b002556))
+* update deps fixes [#2487](https://github.com/xvaara/bootstrap-vue-next/issues/2487) ([#2617](https://github.com/xvaara/bootstrap-vue-next/issues/2617)) ([5f4416e](https://github.com/xvaara/bootstrap-vue-next/commit/5f4416eaf644145cb3f454e051905a851b6a0091))
+
+
+### Performance Improvements
+
+* **BTable:** use a single array.reduce instead of multiple verbose methods when iterating the items array. Reducing the total number of iterations fixes [#2404](https://github.com/xvaara/bootstrap-vue-next/issues/2404) ([7621aad](https://github.com/xvaara/bootstrap-vue-next/commit/7621aad0000c9138983315630e35657c6eb97f08))
+* **nuxt:** smaller package ([#2012](https://github.com/xvaara/bootstrap-vue-next/issues/2012)) ([cc1e609](https://github.com/xvaara/bootstrap-vue-next/commit/cc1e60973b76575fa2cd3ef12ea919fabf152085))
+* use getter functions over computed in some cases ([34d2a8f](https://github.com/xvaara/bootstrap-vue-next/commit/34d2a8f850dd965100ccbbcd8c00f05baceb6caa))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * bootstrap-vue-next bumped to 0.31.0
+  * peerDependencies
+    * bootstrap-vue-next bumped to 0.31.0
+
 ## [0.30.4](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/nuxt-v0.30.3...nuxt-v0.30.4) (2025-07-07)
 
 
