@@ -23,6 +23,7 @@ import type {BFormSelectOptionGroupProps} from '../../types/ComponentProps'
 import type {ComputedRef} from 'vue'
 import {useFormSelect} from '../../composables/useFormSelect'
 import type {SelectOption} from '../../types/SelectTypes'
+import type {BFormSelectOptionGroupSlots} from '../../types'
 
 const _props = withDefaults(defineProps<BFormSelectOptionGroupProps>(), {
   disabledField: 'disabled',
@@ -32,15 +33,11 @@ const _props = withDefaults(defineProps<BFormSelectOptionGroupProps>(), {
   valueField: 'value',
 })
 const props = useDefaults(_props, 'BFormSelectOptionGroup')
+defineSlots<BFormSelectOptionGroupSlots<T>>()
 
-defineSlots<{
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  default?: (props: Record<string, never>) => any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  first?: (props: Record<string, never>) => any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  option: (props: SelectOption<T>) => any
-}>()
+// The form select context is injected by BFormSelectOption components automatically
+// We don't need to handle the selected value here since each BFormSelectOption
+// will inject the context directly
 
 const {normalizedOptions} = useFormSelect(() => props.options, props) as {
   normalizedOptions: ComputedRef<SelectOption<T>[]>

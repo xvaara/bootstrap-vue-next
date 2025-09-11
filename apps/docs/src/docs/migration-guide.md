@@ -234,7 +234,7 @@ either [unplug icons](/docs/icons) or by embedding an `.svg`.
 #### Badge Positioning
 
 Badge positioning has changed to using a single property `badge-placement` and our
-[`CombinedPlacement` utility](/docs/types/combined-placement) rather than individual properties.
+[`CombinedPlacement` utility](/docs/types#combinedplacement) rather than individual properties.
 
 For instance, use `badge-placement='top'` in place of `badge-top` or `badge-placement='end'` in place of
 `badge-right`. For combined props, rather than using `badge-top` and `badge-right`, use
@@ -430,7 +430,7 @@ See the [v-html](#v-html) section for information on deprecation of the `html` p
 
 ### BFormCheckbox
 
-See [BForm Components](bform-components)
+See [BForm Components](/docs/components/form-checkbox)
 
 ### BFormDatePicker
 
@@ -458,7 +458,7 @@ They work as documented in vue.js, so there is no longer a need for the properti
 
 ### BFormRadio
 
-See [BForm Components](bform-components)
+See [BForm Components](/docs/components/form-radio)
 
 ### BFormRating
 
@@ -494,7 +494,7 @@ Instead, BootstrapVueNext provides two approaches for customizing icons:
 
 ### BFormSpinButton
 
-See [BForm Components](bform-components)
+See [BForm Components](/docs/components/form-spinbutton)
 
 ### BFormTags
 
@@ -614,28 +614,30 @@ See the [v-html](#v-html) section for information on deprecation of the `cancel-
 #### Replacement for Modal Message boxes
 
 [BootstrapVue](https://bootstrap-vue.github.io/bootstrap-vue/docs/components/modal#modal-message-boxes) provided two methods on the `this.$bvModal` object called `msgBoxOk` and `msgBoxConfirm`.
-In holding with the Vue3 first philosophy, BootstrapVueNext provides a composable called [`useModalController`](/docs/composables/useModalController) that
-fills the same needs (and more).
+In keeping with the Vue3 first philosophy, BootstrapVueNext provides a composable called [`useModal`](/docs/composables/useModal) that
+fills the same use cases (and more).
 
-Please read the [`useModalController`](/docs/composables/useModalController) documentation and then come back here for examples of replacements
+Please read the [`useModal`](/docs/composables/useModal) documentation and then return here for examples of replacements
 for `msgBoxOk` and `msgBoxConfirm`.
 
-Example using `useModalController.show` to replace `msgBoxOk` (Remember to include `<BModalOrchestrator />` in your App Root):
+Example using `useModal.create` to replace `msgBoxOk`:
+Note: If you use `<BApp>`, the modal orchestrator is included by default. If you’re not using `BApp`, include `<BOrchestrator />` at your app root.
 
 <<< DEMO ./demo/ModalMessageBox.vue
 
-Example using `useModalController.confirm` to replace `msgBoxConfirm` (Remember to include `<BModalOrchestrator />` in your App Root):
+Example using `useModal.create` to replace `msgBoxConfirm`:
+Note: If you use `<BApp>`, the modal orchestrator is included by default. If you’re not using `BApp`, include `<BOrchestrator />` at your app root.
 
 <<< DEMO ./demo/ModalConfirm.vue
 
-The `show` and `confirm` `props` object accepts all of the properties that are defined on
-[BModal](/docs/components/modal#component-reference) except for `modelValue`.
+The `create` method accepts all properties defined on
+[BModal](/docs/components/modal#component-reference).
 
 See [Show and Hide](#show-and-hide) shared properties.
 
 #### Replacement for Modal slots
 
-[BootstrapVue](https://bootstrap-vue.github.io/bootstrap-vue/docs/components/modal#custom-rendering-with-slots) provides different slots to configure some pieces of the modal component. These slots are slightly different in [BootstrapVueNext](http://localhost:8000/bootstrap-vue-next/docs/components/modal.html#comp-reference-bmodal-slots):
+[BootstrapVue](https://bootstrap-vue.github.io/bootstrap-vue/docs/components/modal#custom-rendering-with-slots) provides different slots to configure some pieces of the modal component. These slots are slightly different in [BootstrapVueNext](/docs/components/modal.html#comp-reference-bmodal-slots):
 
 | BootstrapVue       | BootstrapVueNext |
 | ------------------ | ---------------- |
@@ -649,7 +651,7 @@ See [Show and Hide](#show-and-hide) shared properties.
 
 ### BNav
 
-`align` prop now takes values from [`AlignmentJustifyContent`](/docs/types/alignment): `start`, `center`, `end`, `between`, `around`, and `evenly`
+`align` prop now takes values from [`AlignmentJustifyContent`](/docs/types#alignment): `start`, `center`, `end`, `between`, `around`, and `evenly`
 
 #### BNavItemDropdown
 
@@ -659,11 +661,11 @@ See the [v-html](#v-html) section for information on deprecation of the `html` p
 
 ### BNavbar
 
-The `type` prop is deprecated. Use the `v-b-color-mode` directive or `useColorMode` composable instead. Details in our [docs](/components/navbar#color-scheme)
+The `type` prop is deprecated. Use the `v-b-color-mode` directive or `useColorMode` composable instead. Details in our [docs](/docs/components/navbar#color-schemes)
 
 #### BNavbarNav
 
-`align` prop now takes values from [`AlignmentJustifyContent`](/docs/types/alignment): `start`, `center`, `end`, `between`, `around`, and `evenly`
+`align` prop now takes values from [`AlignmentJustifyContent`](/docs/types#alignment): `start`, `center`, `end`, `between`, `around`, and `evenly`
 
 ### BOffcanvas
 
@@ -673,7 +675,7 @@ See [Show and Hide](#show-and-hide) shared properties.
 
 ### BOverlay
 
-<NotYetDocumented type="component"/>
+See the [Rounding](#rounding) section.
 
 prop `blur` does not work when the prop `bgColor` is defined. It also will not work if the prop `variant` is anything other than `white` or `transparent`. This overcomes a browser change.
 
@@ -721,7 +723,7 @@ full parity with the BootstrapVue feature is useful, please open an issue or pro
 
 The default for `placement` is now `top` rather than `right`
 
-`$root` events are deprecated. See [usePopoverController](/docs/composables/usePopoverController) as an alternative.
+`$root` events are deprecated. See [usePopover](/docs/composables/usePopover) as an alternative.
 
 ### BProgressBar
 
@@ -756,9 +758,13 @@ is deprecated.
 
 `selected-variant` has been renamed to `selection-variant` for internal consistency.
 
-`sort-compare` and `sort-direction` are deprecated, use the `sortBy` prop (or model) as documented [here](/docs/components/table#sorting) instead.
+Sorting has been significantly reworked. Read the [sorting section](/docs/components/table#sorting) of our documentation. Some specific changes include the following:
 
-Similarly, the `sort-changed` event is replaced by the `update:sortBy` event
+- `sort-changed` event is replaced by the `update:sort-by` event.
+- `sort-direction` has been renamed `initial-sort-direction` for clarity.
+- The sort icons have been changed.
+- The internal `sort-compare` routine has been simplified, if you need to customize sorting for localization, the documentation on [custom sort comparers](/docs/components/table#custom-sort-comparers) for details.
+- `multi-sort` functionality has been implemented.
 
 `table-variant` is replaced with `variant` for consistency.
 
@@ -850,13 +856,43 @@ See [Show and Hide](#show-and-hide) shared properties.
 
 ### BTooltip
 
-<NotYetDocumented type="component"/>
-
 See [Show and Hide](#show-and-hide) shared properties.
 
 See the [v-html](#v-html) section for information on deprecation of the `html` prop.
 
-`content` prop has been renamed to `body` for consistency with other components.
+`BTooltip` is noninteractive by default, unlike in BootstrapVue. This provides for a smoother user
+experience. The `interactive` prop is provided to restore the BootstrapVue behavior.
+
+The `container` prop has been deprecated. Use the `teleportTo` prop instead to specify where the tooltip
+should be mounted. See [Vue Teleport documentation](https://vuejs.org/guide/built-ins/teleport.html).
+
+`custom-class` has been changed to `body-class` and a `title-class` has been added for completeness -
+see [custom classes documentation](/docs/components/tooltip#custom-classes-and-variants) for details.
+
+`fallback-placement` has been deprecated. Use the various options provided by [Floating UI](https://floating-ui.com/)
+to handle placement.
+
+The ability for the `target` prop to take a function has been deprecated.
+
+Trigger behavior differs because the underlying library used to manage tooltips and popovers has changed. See
+[our documentation](/docs/components/tooltip#triggers) and [Floating UI](https://floating-ui.com/)
+for details.
+
+The `variant` prop has been deprecated. Use Bootstrap’s color and background utility classes to style
+tooltips instead. See [Tooltip custom classes and variants](/docs/components/tooltip#custom-classes-and-variants)
+for details.
+
+The `disabled` prop and
+[Programmatically Disabling](https://bootstrap-vue.org/docs/components/tooltip#programmatically-disabling-tooltip) have
+been deprecated along with the `disabled` and `enabled` events. Use `manual=true` to disable BootstrapVueNext’s automatic
+trigger handling. If your application shows the tooltip programmatically, disable those automatic triggers as well.
+If you believe full parity with the BootstrapVue feature is useful, please open an issue or propose a pull request.
+
+`delay` now defaults to 0 rather than 50ms
+
+The default for `placement` is now `top` rather than `right`
+
+`$root` events are deprecated. See [usePopover](/docs/composables/usePopover) as an alternative.
 
 ## Directives
 

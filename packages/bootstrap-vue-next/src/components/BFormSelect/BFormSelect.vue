@@ -35,7 +35,7 @@
 
 <script setup lang="ts" generic="T">
 import type {BFormSelectProps} from '../../types/ComponentProps'
-import {computed, useTemplateRef} from 'vue'
+import {computed, provide, readonly, useTemplateRef} from 'vue'
 import BFormSelectOption from './BFormSelectOption.vue'
 import BFormSelectOptionGroup from './BFormSelectOptionGroup.vue'
 import {useAriaInvalid} from '../../composables/useAriaInvalid'
@@ -45,6 +45,8 @@ import {useId} from '../../composables/useId'
 import {useStateClass} from '../../composables/useStateClass'
 import {useFormSelect} from '../../composables/useFormSelect'
 import type {ComplexSelectOptionRaw, SelectOption} from '../../types/SelectTypes'
+import type {BFormSelectSlots} from '../../types'
+import {formSelectKey} from '../../utils/keys'
 
 const _props = withDefaults(defineProps<Omit<BFormSelectProps, 'modelValue'>>(), {
   ariaInvalid: undefined,
@@ -67,15 +69,7 @@ const _props = withDefaults(defineProps<Omit<BFormSelectProps, 'modelValue'>>(),
   valueField: 'value',
 })
 const props = useDefaults(_props, 'BFormSelect')
-
-defineSlots<{
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  default?: (props: Record<string, never>) => any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  first?: (props: Record<string, never>) => any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  option: (props: SelectOption<T>) => any
-}>()
+defineSlots<BFormSelectSlots<T>>()
 
 const modelValue = defineModel<T>({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -88,7 +82,7 @@ const selectSizeNumber = useToNumber(() => props.selectSize)
 
 const stateClass = useStateClass(() => props.state)
 
-const input = useTemplateRef<HTMLElement>('_input')
+const input = useTemplateRef('_input')
 
 const {focused} = useFocus(input, {
   initialValue: props.autofocus,
@@ -124,6 +118,11 @@ const localValue = computed({
   set: (newValue) => {
     modelValue.value = newValue
   },
+})
+
+// Provide the current model value for child components to inject
+provide(formSelectKey, {
+  modelValue: readonly(localValue),
 })
 
 defineExpose({
