@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.40.6](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/bootstrapvuenext-v0.40.5...bootstrapvuenext-v0.40.6) (2025-10-07)
+
+
+### Bug Fixes
+
+* **BApp:** wrap our test app in BApp in main.ts to enable easy verification of useModal, etc. ([#2865](https://github.com/bootstrap-vue-next/bootstrap-vue-next/issues/2865)) ([d7d3476](https://github.com/bootstrap-vue-next/bootstrap-vue-next/commit/d7d347665f92ad910fc45fc079f304c19d91c99f))
+* **useModalOrchestrator:** circular dependency ([#2874](https://github.com/bootstrap-vue-next/bootstrap-vue-next/issues/2874)) ([c0bf12f](https://github.com/bootstrap-vue-next/bootstrap-vue-next/commit/c0bf12fe34f0671ae1b8392e6b4f9aeb605726d8))
+
+## [0.40.5](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/bootstrapvuenext-v0.40.4...bootstrapvuenext-v0.40.5) (2025-09-23)
+
+
+### Bug Fixes
+
+* **BToggle:** stop looking for missing targets after directive is unmounted ([#2857](https://github.com/bootstrap-vue-next/bootstrap-vue-next/issues/2857)) ([b358449](https://github.com/bootstrap-vue-next/bootstrap-vue-next/commit/b3584492cad4c9ebeb37836cfd45aef878755249))
+
+## [0.40.4](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/bootstrapvuenext-v0.40.3...bootstrapvuenext-v0.40.4) (2025-09-16)
+
+
+### Bug Fixes
+
+* **BOrchestrator:** fix transition delay. ([af49d33](https://github.com/bootstrap-vue-next/bootstrap-vue-next/commit/af49d333a6cb881aa7126e9e2a8741017fad630e))
+
+## [0.40.3](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/bootstrapvuenext-v0.40.2...bootstrapvuenext-v0.40.3) (2025-09-12)
+
+
+### Bug Fixes
+
+* **BTable:** events being wrongly stopped when sent from elements inside TRs ([#2841](https://github.com/bootstrap-vue-next/bootstrap-vue-next/issues/2841)) ([ee8b0f7](https://github.com/bootstrap-vue-next/bootstrap-vue-next/commit/ee8b0f71c8594de058bba2ef5d6ed2d2b034abf9))
+
 ## [0.40.2](https://github.com/bootstrap-vue-next/bootstrap-vue-next/compare/bootstrapvuenext-v0.40.1...bootstrapvuenext-v0.40.2) (2025-09-09)
 
 
