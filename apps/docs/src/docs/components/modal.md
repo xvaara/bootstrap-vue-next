@@ -1,10 +1,6 @@
-# Modal
-
-<PageHeader>
-
-Modals are streamlined, but flexible dialog prompts. They support a number of use cases from user notification to completely custom content and feature a handful of helpful sub-components, sizes, variants, accessibility, and more.
-
-</PageHeader>
+---
+description: 'Modals are streamlined, but flexible dialog prompts. They support a number of use cases from user notification to completely custom content and feature a handful of helpful sub-components, sizes, variants, accessibility, and more.'
+---
 
 ## Usage
 
@@ -301,6 +297,8 @@ If you're looking for replacements for `$bvModal.msgBoxOk` and `$bvModal.msgBoxC
 `<BModal>` provides several accessibility features, including auto focus, return focus, keyboard
 (tab) _focus containment_, and automated `aria-*` attributes.
 
+For information on managing ARIA attributes for modal triggers, see the [ARIA Trigger Registration for Component Visibility](/docs/reference/accessibility#aria-trigger-registration-for-component-visibility) section in the Accessibility reference.
+
 **Note:** The animation effect of this component is dependent on the `prefers-reduced-motion` media
 query. See the
 [reduced motion section of our accessibility documentation](/docs/reference/accessibility) for
@@ -372,9 +370,3 @@ BootstrapVueNext uses the `focus` prop to control initial focus behavior when th
 - Leave `focus` undefined to use the default focus behavior (focuses the modal container)
 
 <!-- Component reference added automatically from component package.json -->
-
-<ComponentReference :data="data" />
-
-<script setup lang="ts">
-import {data} from '../../data/components/modal.data'
-</script>

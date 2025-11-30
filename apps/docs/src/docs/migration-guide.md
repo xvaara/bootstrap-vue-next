@@ -1,4 +1,7 @@
-# Migration Guide
+---
+description: >
+  Guide for migrating from BootstrapVue to BootstrapVueNext. Learn about breaking changes, deprecated features, and how to update your components, directives, and configuration for Vue 3 and Bootstrap 5.
+---
 
 ## Overview
 
@@ -450,7 +453,7 @@ Use `label-visually-hidden` instead of `label-sronly` per
 Access to the native `input` element is implemented differently due to changes in how Vue 3
 handles references. See the [BFormInput documentation](/docs/components/form-input#exposed-input-element) for more details.
 
-<NotYetImplemented>Disabling mousewheel events.</NotYetImplemented>
+Disabling mousewheel events on numeric inputs can be achieved using Vue's native event modifier: `@wheel.prevent`. See the [BFormInput documentation](/docs/components/form-input#disabling-mousewheel-events-on-numeric-like-inputs) for usage examples.
 
 `trim`, `lazy`, or `number` properties have been deprecated. We support the native modifiers
 [`trim`, `lazy`, and `number`](https://vuejs.org/guide/essentials/forms.html#modifiers).
@@ -575,6 +578,16 @@ Bootstrap Vue used `Vue Router 3`, BootstrapVueNext uses [`Vue Router 4`](https:
 
 `BLink` no longer supresses the scroll to top default behavior when `href='#'`.
 
+::: tip Handling href="#" Links in Documentation
+In our documentation site, we addressed the scroll-to-top behavior by cleaning up unnecessary `href="#"` attributes:
+
+1. **Remove unnecessary hrefs**: We removed `href="#"` from demo components where it wasn't providing any functional value (just styling).
+
+2. **Use contextual anchors**: Where navigation is actually needed, we replaced `href="#"` with meaningful anchor links that point to their demo containers (e.g., `href="#navbar-overview"`). This provides better user experience by allowing users to navigate directly to specific examples.
+
+This approach maintains component functionality while eliminating the unwanted scroll-to-top behavior.
+:::
+
 #### append
 
 Vue router deprecated the `append` prop in `<router-link>`, BootstrapVueNext has followed suit and deprecated the `append`
@@ -607,7 +620,8 @@ flex utility classes. See their [documentation](https://getbootstrap.com/docs/5.
 
 ### BModal
 
-<NotYetImplemented/> `footer-tag` and `header-tag`
+`footer-tag` and `header-tag` are deprecated, use the `footer` and `title` slots instead. See the
+[modal documentation](/docs/components/modal#custom-rendering-with-slots) for details.
 
 #### Removed Global Modal Management
 
@@ -700,7 +714,7 @@ See the [v-html](#v-html) section for information on deprecation of the `cancel-
 
 #### Modal Slot changes
 
-[BootstrapVue](https://bootstrap-vue.github.io/bootstrap-vue/docs/components/modal#custom-rendering-with-slots) provides different slots to configure some pieces of the modal component. These slots are slightly different in [BootstrapVueNext](/docs/components/modal.html#comp-reference-bmodal-slots):
+[BootstrapVue](https://bootstrap-vue.github.io/bootstrap-vue/docs/components/modal#custom-rendering-with-slots) provides different slots to configure some pieces of the modal component. These slots are slightly different in [BootstrapVueNext](/docs/components/modal#comp-reference-bmodal-slots):
 
 | BootstrapVue       | BootstrapVueNext |
 | ------------------ | ---------------- |
@@ -719,34 +733,11 @@ The scoped variables available to modal slots have changed between BootstrapVue 
 
 **BootstrapVue slot scope:**
 
-```typescript
-{
-  ok: () => void,       // Closes modal with trigger 'ok'
-  cancel: () => void,   // Closes modal with trigger 'cancel'
-  close: () => void,    // Closes modal with trigger 'headerclose'
-  hide: (trigger?: string) => void, // Closes modal with custom trigger
-  visible: boolean      // Boolean visibility state
-}
-```
+<<< FRAGMENT ./demo/ModalSlotScopeBootstrapVue.ts#snippet{typescript}
 
 **BootstrapVueNext slot scope (BModalSlotsData):**
 
-```typescript
-interface BModalSlotsData extends ShowHideSlotsData {
-  cancel: () => void // Closes modal with trigger 'cancel'
-  close: () => void // Closes modal with trigger 'close' (note: 'close' not 'headerclose')
-  ok: () => void // Closes modal with trigger 'ok'
-}
-
-interface ShowHideSlotsData {
-  id: string // Modal ID string
-  show: () => void // Show the modal
-  hide: (trigger?: string, noTriggerEmit?: boolean) => void // Enhanced hide method
-  toggle: () => void // Toggle modal visibility
-  active: boolean // Boolean - true when modal is active/visible
-  visible: boolean // Boolean - same as active, for compatibility
-}
-```
+<<< FRAGMENT ./demo/ModalSlotScopeBootstrapVueNext.ts#snippet{typescript}
 
 **Key changes:**
 
@@ -834,10 +825,6 @@ The `type` prop is deprecated. Use the `v-b-color-mode` directive or `useColorMo
 
 `align` prop now takes values from [`AlignmentJustifyContent`](/docs/types#alignment): `start`, `center`, `end`, `between`, `around`, and `evenly`
 
-### BOffcanvas
-
-<NotYetDocumented type="component"/>
-
 See [Show and Hide](#show-and-hide) shared properties.
 
 ### BOverlay
@@ -896,6 +883,83 @@ The default for `placement` is now `top` rather than `right`
 
 See the [v-html](#v-html) section for information on deprecation of the `label-html` prop.
 
+### BSidebar
+
+`BSidebar` has been renamed to `BOffcanvas` to align with the name chosen by the
+[Bootstrap 5](https://getbootstrap.com/docs/5.3/components/offcanvas) team for this functionality.
+
+#### Renamed Component
+
+- `<BSidebar>` → `<BOffcanvas>`
+
+#### Placement Changes
+
+The `right` prop has been replaced with a more flexible `placement` prop:
+
+- `right` prop is **deprecated**
+- Use `placement="end"` instead of `:right="true"`
+- Use `placement="start"` instead of `:right="false"` (or omit, as `start` is the default)
+- New placements available: `placement="top"` and `placement="bottom"`
+
+#### aria-\* support
+
+`aria-label` and `aria-labelby` aren't explicitly defined as props, but setting them
+on `<BOffcanvas>` will bind correctly to the main `<div>`.
+
+#### Variant Props Deprecated
+
+The `bg-variant` and `text-variant` props have been **deprecated**. Bootstrap 5 offcanvas components don't support these props directly.
+
+Instead, use utility classes:
+
+- Apply background classes via `body-class` prop: `body-class="bg-dark text-light"`
+- Apply classes to content wrapper elements within the default slot
+- Use the `header-class` prop for header styling
+
+#### Animation Props
+
+The `no-slide` prop has been renamed to `no-animation` for consistency with other components.
+
+- `no-slide` → `no-animation`
+
+#### Focus Management
+
+The `no-enforce-focus` prop has been renamed to `no-trap` for consistency with modal and other components.
+
+- `no-enforce-focus` → `no-trap`
+
+#### Route Change Behavior
+
+The `no-close-on-route-change` prop has been **removed**. Offcanvas components no longer automatically close on route changes by default. If you need this behavior, you'll need to implement it manually by watching the route and calling the `hide()` method.
+
+#### Z-Index Prop Removed
+
+The `z-index` prop has been **removed**. Use CSS to customize z-index if needed.
+
+#### Backdrop
+
+The `backdrop` prop has been deprecated. Backdrop is enabled by default. Use the new `no-backdrop` prop to turn it off.
+
+The `backdrop-variant` prop has been **removed**. Bootstrap 5 offcanvas backdrops use a standard dark backdrop.
+
+#### Class Props
+
+The `sidebar-class` prop has been **removed**. Use the standard `class` prop instead to apply classes directly to the offcanvas element.
+
+#### Tag
+
+The `tag` prop has been deprecated.
+
+#### Header and Footer
+
+The `header-tag` and `footer-tag` props have been deprecated. Use the `header` and `footer` slots to override header and footer behavior.
+
+The `close-label` prop been renamed to `header-close-label` for consistency
+
+#### Events
+
+The `change` event is no longer emitted. Use `update:model-value` instead for v-model compatibility, or use the `show`/`hide`/`shown`/`hidden` events to track state changes.
+
 ### BSkeleton
 
 `<BSkeleton*>` components have been replaced by the more appropriately named `<BPlaceholder*>` components.
@@ -903,6 +967,14 @@ See the [v-html](#v-html) section for information on deprecation of the `label-h
 `<BSkeletonIcon>` is deprecated along with the rest of the BootstrapVue icon support. See our
 [icon documentation](/docs/icons) for details. This functionality can be replicated by using
 `<BPlaceholderWrapper>` with your choice of icon replacement in the `loading` slot.
+
+`<BSkeletonImg>` is deprecated, using `<BPlaceholderWrapper>` should be a workable replacement.
+
+`animation` values have changed from `Wave`, `Fade`, `Throb` and `None` to `wave`, `glow`,
+and `undefined` to reflect the [Bootstrap 5 animations](https://getbootstrap.com/docs/5.3/components/placeholders/#animation)
+
+`type` has been deprecated. [`BPlaceholderButton`](/docs/components/placeholder#placeholder-buttons) is a replacement for the button type.
+If you find a need for the other types (Avatar or Input), please open an issue or propose a pull request.
 
 ### BTable
 
@@ -1017,9 +1089,108 @@ The `changed` event on `BTabs` is deprecated.
 
 ### BToast
 
-<NotYetDocumented type="component"/>
+#### Global Toast Management System Changes
+
+**`$bvToast` instance methods are deprecated:**
+
+- `this.$bvToast.show(options)` → Use `useToast` composable with `create()` method
+- `this.$bvToast.hide(target)` → Use `useToast` composable or template refs with `.hide()`
+- `this.$bvToast.hideAll()` → Use `useToast` composable
+
+**Named toaster system is deprecated:**
+
+- `<b-toaster>` targets → Use Vue's `Teleport` component or `useToast` positioning
+- Toaster positioning CSS → Use CSS positioning on individual toasts or toast containers
+
+**Alternative approaches:**
+
+Please see [useToast](/docs/composables/useToast) for the modern method of programmatically creating and managing toasts.
+
+#### Props Changes
+
+**Renamed props:**
+
+- `visible` → `model-value` - Controls both visibility and auto-dismiss timing (replaces separate `visible` model)
+- `no-auto-hide` → Set `model-value` to `false` or `true` (boolean) instead of using auto-hide duration
+- `auto-hide-delay` → Set `model-value` to number of milliseconds for auto-dismiss duration
+
+**Removed props (not implemented in BootstrapVueNext):**
+
+- `href` and `to` - Use `useToast` with BLink props or see [BLink Integration](/docs/components/toast#blink-integration) in the toast documentation
+- `toaster` - Use `Teleport` or `useToast` positioning instead
+- `append-toast` - Available on `BOrchestrator` and `useToast` instead
+- `b-toaster-*` related props - Use modern positioning with `Teleport`
+- `static` - BToast renders in place by default (no teleporting behavior)
+
+**New props in BootstrapVueNext:**
+
+- `progress-props` - Configure built-in progress bar for timed toasts
+- `no-progress` - Hide progress bar on timed toasts
+- `show-on-pause` - Control visibility when countdown is paused
+- `interval` - Control countdown timer update frequency (default: `'requestAnimationFrame'`)
+- `solid` - Disable toast transparency (same as BootstrapVue)
+
+#### Auto-dismiss Behavior Changes
+
+**BootstrapVue:** Used separate props for auto-hide configuration:
+
+<<< FRAGMENT ./demo/ToastBootstrapVue.vue#snippet{vue-html}
+
+**BootstrapVueNext:** Uses `model-value` for both visibility and auto-dismiss:
+
+<<< FRAGMENT ./demo/ToastBootstrapVueNext.vue#snippet{vue-html}
+
+#### Event System Changes
+
+**Event naming changes:**
+
+- No `$root` event system - toasts are managed through composables or direct component references
+- All events now use the standardized show/hide event lifecycle
+
+**New events:** BootstrapVueNext adds several events:
+
+- `close-countdown` - Emitted during countdown with remaining milliseconds
+- `update:model-value` - Standard v-model event for visibility/duration changes
+- Standard show/hide lifecycle events: `show`, `shown`, `hide`, `hidden`, `show-prevented`, `hide-prevented`, `toggle`, `toggle-prevented`
+
+#### Slots Changes
+
+**Renamed slots:**
+
+- `toast-title` → `title` - Toast header title content
+
+**Available slots:**
+
+- `default` - Toast body content (enhanced with slot scope data)
+- `title` - Toast header title content (was `toast-title` in BootstrapVue)
+- `close` - Custom close button content (new in BootstrapVueNext)
+
+**Enhanced slot scope:** All slots now receive scope data with control functions:
+
+- `id` - Toast component ID
+- `show()` - Function to show the toast
+- `hide()` - Function to hide the toast
+- `toggle()` - Function to toggle visibility
+- `visible` - Current visibility state
+- `active` - Whether countdown timer is active
+
+#### Accessibility Improvements
+
+**Enhanced ARIA support:**
+
+- `isStatus` prop correctly toggles between `role="alert"` (default) and `role="status"`
+- Corresponding `aria-live` values: `"assertive"` (default) and `"polite"`
+- `aria-atomic="true"` automatically applied for better screen reader announcements
+- `tabindex="0"` for keyboard accessibility
 
 See [Show and Hide](#show-and-hide) shared properties.
+
+### BToaster
+
+The `BToaster` component has been deprecated. Its functionality has been replaced by the
+[`useToast`](/docs/composables/useToast) composable working in concert with the
+[`BOrchestrator`](/docs/components/orchestrator) component. See the documentation for
+details.
 
 ### BTooltip
 
